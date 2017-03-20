@@ -140,6 +140,16 @@
 
 
 
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?240d18309bb5c93bd09c8abd91d0cd1b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 
 
 
@@ -337,6 +347,17 @@
 
           
           
+             <span id="/2017/03/21/针对github权限导致hexo部署失败的解决方案/" class="leancloud_visitors" data-flag-title="针对github权限导致hexo部署失败的解决方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -372,7 +393,7 @@
 </blockquote>
 <h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>如题，hexo最后一次部署是在8月份，然后就是秋招，一直没有在hexo博客上上传新博文，等回过头打算整理几篇博客上传，发现一直部署失败，通过搜索网上前辈们的经验，我决定重新使用hexo+github pages搭建博客（顺便更新版本了），然而······并没有什么卵用······</p>
 <p>错误依旧如下（这已经是重复设置SSH key后的错误版本啦，与一开始的错误描述略有不同，不过都是github权限问题）：</p>
-<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line">FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</div><div class="line">Error: Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">at ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">at emitTwo (events.js:87:13)</div><div class="line">at ChildProcess.emit (events.js:172:7)</div><div class="line">at ChildProcess.cp.emit (E:\blog\HexoBlog\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">at maybeClose (internal/child_process.js:827:16)</div><div class="line">at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</div><div class="line">FATAL Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">Error: Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">at ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">at emitTwo (events.js:87:13)</div><div class="line">at ChildProcess.emit (events.js:172:7)</div><div class="line">at ChildProcess.cp.emit (E:\blog\HexoBlog\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">at maybeClose (internal/child_process.js:827:16)</div><div class="line">at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line">FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</div><div class="line">Error: Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">at ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">at emitTwo (events.js:87:13)</div><div class="line">at ChildProcess.emit (events.js:172:7)</div><div class="line">at ChildProcess.cp.emit (E:\blog\HexoBlog\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">at maybeClose (internal/child_process.js:827:16)</div><div class="line">at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</div><div class="line">FATAL Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">Error: Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">at ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">at emitTwo (events.js:87:13)</div><div class="line">at ChildProcess.emit (events.js:172:7)</div><div class="line">at ChildProcess.cp.emit (E:\blog\HexoBlog\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">at maybeClose (internal/child_process.js:827:16)</div><div class="line">at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</div></pre></td></tr></table></figure>
 </code></pre><p>之前的错误，有网友们有建议将deploy处设置不要使用https，而是改为SSH，如下：</p>
 <pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repository: https:<span class="comment">//github.com/username/username.github.io.git</span></div></pre></td></tr></table></figure>
 </code></pre><p>修改为</p>
@@ -383,7 +404,7 @@
 <h4 id="1-检查是否有SSH-key"><a href="#1-检查是否有SSH-key" class="headerlink" title="(1)检查是否有SSH key"></a>(1)检查是否有SSH key</h4><p>登陆github，点击头像位置处 Settings ——&gt; SSH and GPG keys ，查看是否有SSH keys。如果有，直接跳到第（3）步；如果没有，则继续。</p>
 <h4 id="2-新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写："><a href="#2-新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写：" class="headerlink" title="(2)新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写："></a>(2)新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写：</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"邮箱名"</span></div></pre></td></tr></table></figure>
 </code></pre><p>然后会出现：</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> which to save the key (<span class="regexp">/c/</span>Users/dell/.ssh/id_rsa):</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> which to save the key (<span class="regexp">/c/</span>Users/dell/.ssh/id_rsa):</div></pre></td></tr></table></figure>
 </code></pre><p>直接回车就可以。<br>然后会出现：</p>
 <pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again:</div></pre></td></tr></table></figure>
 </code></pre><p>要求你输入密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容。</p>
@@ -397,11 +418,11 @@
 </code></pre><p>有可能会出现：</p>
 <pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host 'github.com (192.30.252.1)' can't be established.</div><div class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</div><div class="line">Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure>
 </code></pre><p>或者是</p>
-<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	The authenticity of host 'github.com (192.30.252.1)' can't be established.</div><div class="line">RSA key fingerprint is nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</div><div class="line">Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host 'github.com (192.30.252.1)' can't be established.</div><div class="line">RSA key fingerprint is nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</div><div class="line">Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure>
 </code></pre><p>这种情况下，直接 yes 回车</p>
 <p>然后会出现（也可能在 ++$ ssh -T git@github.com++ 之后，直接出现的就是这个，我就是这样~）：</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">	Hi username! You&apos;ve successfully authenticated, but GitHub does not </div><div class="line">provide shell access.</div></pre></td></tr></table></figure>
-</code></pre><h4 id="5-设置用户信息："><a href="#5-设置用户信息：" class="headerlink" title="(5)设置用户信息："></a>(5)设置用户信息：</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">		$ git config --global user.name &quot;用户名&quot;</div><div class="line">$ git config --global user.email  &quot;你希望的邮箱名&quot;</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not </div><div class="line">provide shell access.</div></pre></td></tr></table></figure>
+</code></pre><h4 id="5-设置用户信息："><a href="#5-设置用户信息：" class="headerlink" title="(5)设置用户信息："></a>(5)设置用户信息：</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;用户名&quot;</div><div class="line">$ git config --global user.email  &quot;你希望的邮箱名&quot;</div></pre></td></tr></table></figure>
 </code></pre><h4 id="6-然后就可以部署你的博客到github啦"><a href="#6-然后就可以部署你的博客到github啦" class="headerlink" title="(6)然后就可以部署你的博客到github啦~"></a>(6)然后就可以部署你的博客到github啦~</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure>
 </code></pre><h4 id="7-更多常见hexo命令，-传送门-http-www-tuicool-com-articles-yUreInQ"><a href="#7-更多常见hexo命令，-传送门-http-www-tuicool-com-articles-yUreInQ" class="headerlink" title="(7)更多常见hexo命令，(传送门)[http://www.tuicool.com/articles/yUreInQ]"></a>(7)更多常见hexo命令，(传送门)[<a href="http://www.tuicool.com/articles/yUreInQ" target="_blank" rel="external">http://www.tuicool.com/articles/yUreInQ</a>]</h4><p>补充1：过程中也遇到一些其他问题，比如Error: Bad file number，但是总的来说，按照上面的步骤就可以解决因为github权限问题hexo部署失败的问题（前提是你的配置文件的内容没有问题）。</p>
 <p>补充2：windows系统不要使用它自己的命令窗口！！！使用git shell或者 git bash 等之类的一些工具。</p>
@@ -514,6 +535,17 @@
           
 
           
+          
+             <span id="/2017/03/20/loadJsCssLater/" class="leancloud_visitors" data-flag-title="动态加载javascript和css">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -661,6 +693,17 @@
 
           
           
+             <span id="/2017/03/20/JS-Issue/" class="leancloud_visitors" data-flag-title="Javascript问题汇总">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -803,6 +846,17 @@
           
 
           
+          
+             <span id="/2017/03/19/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1134,6 +1188,113 @@
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("SSi9gkgyr5X8e1HLQp5XkFJa-gzGzoHsz", "zeIjHVi4f44EjI5ASxLkwwqD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
