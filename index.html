@@ -424,67 +424,16 @@
       
         
           
-            <p>网页布局（layout）是css的一个中带你应用<br><img src="http://www.runoob.com/wp-content/uploads/2015/07/7bf8bed24a17fbebd3e171f9630dbccb.gif" alt=""></p>
-<p>布局的传统解决方案，基于<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box_model" target="_blank" rel="external">盒状模型</a>，依赖 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank" rel="external">display</a>属性 + <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank" rel="external">position</a>属性 + <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank" rel="external">float</a>属性。它对于那些特殊布局非常不方便，比如，<a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="external">垂直居中</a>就不容易实现。<br><img src="http://www.runoob.com/wp-content/uploads/2015/07/5a7d00514af1e464221c677c15e8e990.png" alt=""><br>2009年，W3C提出了一种新的方案—-Flex布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
-<p><img src="http://www.runoob.com/wp-content/uploads/2015/07/8712d713c7d0b884a5cb9770efc422b4.jpg" alt=""><br>Flex布局将成为未来布局的首选方案。本文介绍Flex布局的语法。<br>以下内容主要参考了下面两篇文章：A Complete Guide to Flexbox 和 A Visual Guide to CSS3 Flexbox Properties。</p>
-<h3 id="一、Flex布局是什么？"><a href="#一、Flex布局是什么？" class="headerlink" title="一、Flex布局是什么？"></a>一、Flex布局是什么？</h3><p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。<br>任何一个容器都可以指定为Flex布局。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p>行内元素也可以使用Flex布局。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">display</span>: inline-flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p>Webkit内核的浏览器，必须加上-webkit前缀。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p>注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</p>
-<h3 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h3><p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。<br><img src="http://www.runoob.com/wp-content/uploads/2015/07/3791e575c48b3698be6a94ae1dbff79d.png" alt=""></p>
-<p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。<br>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
-<p>###三、容器的属性<br>以下6个属性设置在容器上。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">flex-direction</span></div><div class="line"><span class="selector-tag">flex-wrap</span></div><div class="line"><span class="selector-tag">flex-flow</span></div><div class="line"><span class="selector-tag">justify-content</span></div><div class="line"><span class="selector-tag">align-items</span></div><div class="line"><span class="selector-tag">align-content</span></div></pre></td></tr></table></figure>
-</code></pre><h4 id="3-1-flex-direction属性"><a href="#3-1-flex-direction属性" class="headerlink" title="3.1 flex-direction属性"></a>3.1 flex-direction属性</h4><p>flex-direction属性决定主轴的方向（即项目的排列方向）。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/0cbe5f8268121114e87d0546e53cda6e.png" alt=""></p>
-<p>它可能有4个值。</p>
-<pre><code><figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">row</span>（默认值）：主轴为水平方向，起点在左端。</div><div class="line"><span class="built_in">row</span>-reverse：主轴为水平方向，起点在右端。</div><div class="line"><span class="built_in">column</span>：主轴为垂直方向，起点在上沿。</div><div class="line"><span class="built_in">column</span>-reverse：主轴为垂直方向，起点在下沿。</div></pre></td></tr></table></figure>
-</code></pre><h4 id="3-2-flex-wrap属性"><a href="#3-2-flex-wrap属性" class="headerlink" title="3.2 flex-wrap属性"></a>3.2 flex-wrap属性</h4><p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。<br><img src="http://www.runoob.com/wp-content/uploads/2015/07/903d5b7df55779c03f2687a7d4d6bcea.png" alt=""></p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p>它可能取三个值。<br>（1）nowrap（默认）：不换行。<br><img src="http://www.runoob.com/wp-content/uploads/2015/07/9da1f23965756568b4c6ea7124db7b9a.png" alt=""></p>
-<p>（2）wrap：换行，第一行在上方。<br><img src="http://www.runoob.com/wp-content/uploads/2015/07/3c6b3c8b8fe5e26bca6fb57538cf72d9.jpg" alt=""></p>
-<p>（3）wrap-reverse：换行，第一行在下方。<br><img src="http://www.runoob.com/wp-content/uploads/2015/07/fb4cf2bab8b6b744b64f6d7a99cd577c.jpg" alt=""></p>
-<h4 id="3-3-flex-flow"><a href="#3-3-flex-flow" class="headerlink" title="3.3 flex-flow"></a>3.3 flex-flow</h4><p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><h4 id="3-4-justify-content属性"><a href="#3-4-justify-content属性" class="headerlink" title="3.4 justify-content属性"></a>3.4 justify-content属性</h4><p>justify-content属性定义了项目在主轴上的对齐方式。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/c55dfe8e3422458b50e985552ef13ba5.png" alt=""></p>
-<p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
-<pre><code><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">flex-start（默认值）：左对齐</div><div class="line"></div><div class="line">flex-<span class="keyword">end</span>：右对齐</div><div class="line"></div><div class="line">center： 居中</div><div class="line"><span class="literal">space</span>-<span class="keyword">between</span>：两端对齐，项目之间的间隔都相等。</div><div class="line"></div><div class="line"><span class="literal">space</span>-<span class="keyword">around</span>：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</div></pre></td></tr></table></figure>
-</code></pre><h4 id="3-5-align-items属性"><a href="#3-5-align-items属性" class="headerlink" title="3.5 align-items属性"></a>3.5 align-items属性</h4><p>align-items属性定义项目在交叉轴上如何对齐。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">align-items</span>: flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/2b0c39c7e7a80d5a784c8c2ca63cde17.png" alt=""><br>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</p>
-<pre><code><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>-start：交叉轴的起点对齐。</div><div class="line"><span class="attribute">flex</span>-end：交叉轴的终点对齐。</div><div class="line">center：交叉轴的中点对齐。</div><div class="line">baseline: 项目的第一行文字的基线对齐。</div><div class="line">stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</div></pre></td></tr></table></figure>
-</code></pre><h5 id="3-6-align-content属性"><a href="#3-6-align-content属性" class="headerlink" title="3.6 align-content属性"></a>3.6 align-content属性</h5><p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
-<pre><code><figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">  align-content: flex-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">space</span>-between | <span class="type">space</span>-around | <span class="type">stretch</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/f10918ccb8a13247c9d47715a2bd2c33.png" alt=""><br>该属性可能取6个值。</p>
-<pre><code><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">flex-start：与交叉轴的起点对齐。</div><div class="line">flex-<span class="keyword">end</span>：与交叉轴的终点对齐。</div><div class="line">center：与交叉轴的中点对齐。</div><div class="line"><span class="literal">space</span>-<span class="keyword">between</span>：与交叉轴两端对齐，轴线之间的间隔平均分布。</div><div class="line"><span class="literal">space</span>-<span class="keyword">around</span>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</div><div class="line">stretch（默认值）：轴线占满整个交叉轴。</div></pre></td></tr></table></figure>
-</code></pre><h3 id="四、项目的属性"><a href="#四、项目的属性" class="headerlink" title="四、项目的属性"></a>四、项目的属性</h3><pre><code><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">order</span></div><div class="line"><span class="attribute">flex-grow</span></div><div class="line"><span class="attribute">flex-shrink</span></div><div class="line"><span class="attribute">flex-basis</span></div><div class="line"><span class="attribute">flex</span></div><div class="line"><span class="attribute">align-self</span></div></pre></td></tr></table></figure>
-</code></pre><h4 id="4-1-order属性"><a href="#4-1-order属性" class="headerlink" title="4.1 order属性"></a>4.1 order属性</h4><p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">order</span>: &lt;integer&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/59e399c72daafcfcc20ede36bf32f266.png" alt=""></p>
-<h4 id="4-2-flex-grow属性"><a href="#4-2-flex-grow属性" class="headerlink" title="4.2 flex-grow属性"></a>4.2 flex-grow属性</h4><p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/f41c08bb35962ed79e7686f735d6cd78.png" alt=""><br>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
-<h4 id="4-3-flex-shrink属性"><a href="#4-3-flex-shrink属性" class="headerlink" title="4.3 flex-shrink属性"></a>4.3 flex-shrink属性</h4><p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* default 1 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/240d3e960043a729bb3ff5e34987904f.jpg" alt=""><br>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。<br>负值对该属性无效。</p>
-<h4 id="4-4-flex-basis属性"><a href="#4-4-flex-basis属性" class="headerlink" title="4.4 flex-basis属性"></a>4.4 flex-basis属性</h4><p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
-<h4 id="4-5-flex属性"><a href="#4-5-flex属性" class="headerlink" title="4.5 flex属性"></a>4.5 flex属性</h4><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
-<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">flex</span>: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-<h4 id="4-6-align-self属性"><a href="#4-6-align-self属性" class="headerlink" title="4.6 align-self属性"></a>4.6 align-self属性</h4><p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
-<pre><code><figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  align-self: <span class="built_in">auto</span> | <span class="type">flex</span>-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">baseline</span> | <span class="type">stretch</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><img src="http://www.runoob.com/wp-content/uploads/2015/07/55b19171b8b6b9487d717bf2ecbba6de.png" alt=""></p>
-<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
-
-          
+          网页布局（layout）是css的一个中带你应用
+布局的传统解决方案，基于盒状模型，依赖 display属性 + position属性 + float属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。2009年，W3C提出了一种新的方案—-Flex布局，可以简便、完整、响应式地实现各种
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/22/Flex布局语法教程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -636,56 +585,17 @@
       
         
           
-            <h2 id="针对github权限导致hexo部署失败的解决方案"><a href="#针对github权限导致hexo部署失败的解决方案" class="headerlink" title="针对github权限导致hexo部署失败的解决方案"></a>针对github权限导致hexo部署失败的解决方案</h2><h3 id="hexo-deplay出错，没有反应"><a href="#hexo-deplay出错，没有反应" class="headerlink" title="hexo deplay出错，没有反应"></a>hexo deplay出错，没有反应</h3><blockquote>
-<p>今天想在自己的另一个<a href="https://arisons.github.io/">博客地址</a>上更新一下博客，没想到hexo deplay没有反应，以下是解决过程</p>
-<p>1.因为没有报错信息，所以直接在网上搜解决方案，集广大网友们的智慧，然后使用了npm install hexo-deployer-git –save，而后hexo deploy，但是没有解决问题，而且爆出警告：</p>
-</blockquote>
-<pre><code><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm WARN <span class="keyword">optional</span> Skipping failed <span class="keyword">optional</span> dependency /chokidar/fsevents:</div><div class="line">npm WARN notsup <span class="keyword">Not</span> compatible <span class="keyword">with</span> your operating system <span class="keyword">or</span> architecture: fsevents@<span class="number">1.0</span><span class="number">.15</span></div></pre></td></tr></table></figure>
-</code></pre><blockquote>
-<p>2.更新npm npm install npm -g ，更新成功</p>
-<p>3.继续npm install hexo-deployer-git –save，hexo deploy 还是不行： </p>
-</blockquote>
-<pre><code><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">INFO  Deploying: git</div><div class="line">INFO  Clearing .deploy_git folder...</div><div class="line">INFO  Copying files from public folder...</div><div class="line">fatal: <span class="keyword">Not</span> a git repository (<span class="keyword">or</span> any <span class="keyword">of</span> the parent directories): .git</div><div class="line">FATAL Something<span class="symbol">'s</span> wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</div><div class="line">Error: fatal: <span class="keyword">Not</span> a git repository (<span class="keyword">or</span> any <span class="keyword">of</span> the parent directories): .git</div><div class="line"></div><div class="line"><span class="keyword">at</span> ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:<span class="number">37</span>:<span class="number">17</span>)</div><div class="line"><span class="keyword">at</span> emitTwo (events.js:<span class="number">87</span>:<span class="number">13</span>)</div><div class="line">……</div><div class="line">(E:\blog\HexoBlog\node_modules\cross-spawn\lib\enoent.js:<span class="number">40</span>:<span class="number">29</span>)</div><div class="line"><span class="keyword">at</span> maybeClose (internal/child_process.js:<span class="number">827</span>:<span class="number">16</span>)</div><div class="line"><span class="keyword">at</span> Socket.&lt;anonymous&gt; (internal/child_process.js:<span class="number">319</span>:<span class="number">11</span>)</div><div class="line"><span class="keyword">at</span> emitOne (events.js:<span class="number">77</span>:<span class="number">13</span>)</div><div class="line"><span class="keyword">at</span> Socket.emit (events.js:<span class="number">169</span>:<span class="number">7</span>)</div><div class="line"><span class="keyword">at</span> Pipe._onclose (net.js:<span class="number">477</span>:<span class="number">12</span>)</div></pre></td></tr></table></figure>
-</code></pre><blockquote>
-<p>4、后来灵机一动，把.deploy_git文件夹手动删除了，重新hexo deploy了一次，成功！</p>
-</blockquote>
-<h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>如题，hexo最后一次部署是在8月份，然后就是秋招，一直没有在hexo博客上上传新博文，等回过头打算整理几篇博客上传，发现一直部署失败，通过搜索网上前辈们的经验，我决定重新使用hexo+github pages搭建博客（顺便更新版本了），然而······并没有什么卵用······</p>
-<p>错误依旧如下（这已经是重复设置SSH key后的错误版本啦，与一开始的错误描述略有不同，不过都是github权限问题）：</p>
-<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line">FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</div><div class="line">Error: Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">at ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">at emitTwo (events.js:87:13)</div><div class="line">at ChildProcess.emit (events.js:172:7)</div><div class="line">at ChildProcess.cp.emit (E:\blog\HexoBlog\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">at maybeClose (internal/child_process.js:827:16)</div><div class="line">at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</div><div class="line">FATAL Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">Error: Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">at ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:37:17)</div><div class="line">at emitTwo (events.js:87:13)</div><div class="line">at ChildProcess.emit (events.js:172:7)</div><div class="line">at ChildProcess.cp.emit (E:\blog\HexoBlog\node_modules\cross-spawn\lib\enoent.js:40:29)</div><div class="line">at maybeClose (internal/child_process.js:827:16)</div><div class="line">at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</div></pre></td></tr></table></figure>
-</code></pre><p>之前的错误，有网友们有建议将deploy处设置不要使用https，而是改为SSH，如下：</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repository: https:<span class="comment">//github.com/username/username.github.io.git</span></div></pre></td></tr></table></figure>
-</code></pre><p>修改为</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repo：git@github.com:username/username.github.io.git</div></pre></td></tr></table></figure>
-</code></pre><p>修改了很多遍，以各种姿势······然而还是没有什么卵用</p>
-<p>当然错误不是重点，重点是怎样使我们的博客可以重新部署到github上~</p>
-<h3 id="当部署失败的时候，请按照以下步骤进行："><a href="#当部署失败的时候，请按照以下步骤进行：" class="headerlink" title="当部署失败的时候，请按照以下步骤进行："></a>当部署失败的时候，请按照以下步骤进行：</h3><p>（当然，在此之前，你可以选择 hexo init）教程有很多，一搜就可以，懒癌症可以点击传送门，这是一个比较全的搭建配置教程。</p>
-<h4 id="1-检查是否有SSH-key"><a href="#1-检查是否有SSH-key" class="headerlink" title="(1)检查是否有SSH key"></a>(1)检查是否有SSH key</h4><p>登陆github，点击头像位置处 Settings ——&gt; SSH and GPG keys ，查看是否有SSH keys。如果有，直接跳到第（3）步；如果没有，则继续。</p>
-<h4 id="2-新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写："><a href="#2-新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写：" class="headerlink" title="(2)新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写："></a>(2)新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写：</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"邮箱名"</span></div></pre></td></tr></table></figure>
-</code></pre><p>然后会出现：</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> which to save the key (<span class="regexp">/c/</span>Users/dell/.ssh/id_rsa):</div></pre></td></tr></table></figure>
-</code></pre><p>直接回车就可以。<br>然后会出现：</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again:</div></pre></td></tr></table></figure>
-</code></pre><p>要求你输入密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容。</p>
-<p>注意：输入密码的时候没有*字样的，直接输入就好。<br>然后会出现：</p>
-<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Your identification has been saved in /c/Users/dell/.ssh/id_rsa.</div><div class="line">Your public key has been saved in /c/Users/dell/.ssh/id_rsa.pub.</div><div class="line">The key fingerprint is:</div><div class="line">65:69:······02:4b emailname@email.com</div><div class="line">The key's randomart image is:</div><div class="line">+--[ RSA 2048]----+</div><div class="line">|                 |</div><div class="line">|       .   o .   |</div><div class="line">|    . o o = o    |</div><div class="line">|   . o * = o     |</div><div class="line">|  E  o + o .     |</div><div class="line">| . o.   . .      |</div><div class="line">|     ..          |</div><div class="line">+-----------------+</div></pre></td></tr></table></figure>
-</code></pre><p>至此，密钥已经成功生成。</p>
-<h4 id="3-接下来在github上添加SSH-key："><a href="#3-接下来在github上添加SSH-key：" class="headerlink" title="(3)接下来在github上添加SSH key："></a>(3)接下来在github上添加SSH key：</h4><p>① 打开本地文件：id_rsa.pub（文件路径可以在上一步SSH生成成功后看到路径，比如我的是c/Users/dell/.ssh/id_rsa.pub），可以将这个文件在编辑器中打开，然后全选复制。</p>
-<p>② 登陆github，点击头像位置处 Settings ——&gt; SSH and GPG keys ——&gt; New SSH key，点击新建SSH key。</p>
-<p>③ 将 ① 中复制的内容粘贴在key文本框里，title可以不用填（或者自己起一个名字也可以）。</p>
-<h4 id="4-测试设置是否成功："><a href="#4-测试设置是否成功：" class="headerlink" title="(4)测试设置是否成功："></a>(4)测试设置是否成功：</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure>
-</code></pre><p>有可能会出现：</p>
-<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host 'github.com (192.30.252.1)' can't be established.</div><div class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</div><div class="line">Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure>
-</code></pre><p>或者是</p>
-<pre><code><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host 'github.com (192.30.252.1)' can't be established.</div><div class="line">RSA key fingerprint is nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</div><div class="line">Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure>
-</code></pre><p>这种情况下，直接 yes 回车</p>
-<p>然后会出现（也可能在 ++$ ssh -T git@github.com++ 之后，直接出现的就是这个，我就是这样~）：</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not </div><div class="line">provide shell access.</div></pre></td></tr></table></figure>
-</code></pre><h4 id="5-设置用户信息："><a href="#5-设置用户信息：" class="headerlink" title="(5)设置用户信息："></a>(5)设置用户信息：</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;用户名&quot;</div><div class="line">$ git config --global user.email  &quot;你希望的邮箱名&quot;</div></pre></td></tr></table></figure>
-</code></pre><h4 id="6-然后就可以部署你的博客到github啦"><a href="#6-然后就可以部署你的博客到github啦" class="headerlink" title="(6)然后就可以部署你的博客到github啦~"></a>(6)然后就可以部署你的博客到github啦~</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure>
-</code></pre><h4 id="7-更多常见hexo命令，-传送门-http-www-tuicool-com-articles-yUreInQ"><a href="#7-更多常见hexo命令，-传送门-http-www-tuicool-com-articles-yUreInQ" class="headerlink" title="(7)更多常见hexo命令，(传送门)[http://www.tuicool.com/articles/yUreInQ]"></a>(7)更多常见hexo命令，(传送门)[<a href="http://www.tuicool.com/articles/yUreInQ" target="_blank" rel="external">http://www.tuicool.com/articles/yUreInQ</a>]</h4><p>补充1：过程中也遇到一些其他问题，比如Error: Bad file number，但是总的来说，按照上面的步骤就可以解决因为github权限问题hexo部署失败的问题（前提是你的配置文件的内容没有问题）。</p>
-<p>补充2：windows系统不要使用它自己的命令窗口！！！使用git shell或者 git bash 等之类的一些工具。</p>
-<h3 id="欢迎评论交流"><a href="#欢迎评论交流" class="headerlink" title="欢迎评论交流"></a>欢迎评论交流</h3>
-          
+          针对github权限导致hexo部署失败的解决方案hexo deplay出错，没有反应
+今天想在自己的另一个博客地址上更新一下博客，没想到hexo deplay没有反应，以下是解决过程
+1.因为没有报错信息，所以直接在网上搜解决方案，集广大网友们的智慧，然后使用了npm install hexo-d
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/21/针对github权限导致hexo部署失败的解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -815,24 +725,18 @@
       
         
           
-            <h3 id="动态加载javascript-和-css"><a href="#动态加载javascript-和-css" class="headerlink" title="动态加载javascript 和 css"></a>动态加载javascript 和 css</h3><blockquote>
-<p>动态加载javascript方法</p>
-</blockquote>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url</span>) </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> script =<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">	script.type=<span class="string">"text/javascript"</span>;</div><div class="line">	script.src=url;</div><div class="line">	<span class="built_in">document</span>.body.appenfChild(script);</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line">loadScript(<span class="string">"javascript/lib/cookie.js"</span>);</div></pre></td></tr></table></figure>
-</code></pre><blockquote>
-<p>方法二：</p>
-</blockquote>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params">code</span>)</span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">	script.type=<span class="string">"text/javascript"</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		<span class="comment">// firefox/safari/chrome/opera</span></div><div class="line">		script.appendChild(<span class="built_in">document</span>.createTextNode(code));</div><div class="line">	&#125;<span class="keyword">catch</span>&#123;</div><div class="line">		<span class="comment">// IE早起的浏览器，需要使用script的text属性来指定javascript代码</span></div><div class="line">			script.text = code;</div><div class="line">	&#125;;</div><div class="line">	<span class="built_in">document</span>.body.appendChild(script);</div><div class="line"></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> text=<span class="string">"function test()&#123;alert('test');&#125;"</span>;</div><div class="line">loadScriptString(text);</div><div class="line">test();</div></pre></td></tr></table></figure>
-</code></pre><h3 id="动态加载css"><a href="#动态加载css" class="headerlink" title="动态加载css"></a>动态加载css</h3><blockquote>
-<p>方法一</p>
-</blockquote>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyles</span>(<span class="params">url</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(link);</div><div class="line">	link.type=<span class="string">"text/css"</span>;</div><div class="line">	link.rel=<span class="string">"stylesheet"</span>;</div><div class="line">	link.href=url;</div><div class="line">	<span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(link);</div><div class="line">&#125;;</div><div class="line">loadStyles(<span class="string">"css/secondindex.css"</span>);</div></pre></td></tr></table></figure>
-</code></pre><blockquote>
-<p>方法二</p>
-</blockquote>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span>(<span class="params">cssText</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> style=<span class="built_in">document</span>.creatElement(<span class="string">"style"</span>);</div><div class="line">	style.type=<span class="string">"text/css"</span>;</div><div class="line"></div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">	</div><div class="line">	<span class="comment">// firefox/safari/chrome/opera</span></div><div class="line">	style/appendChild(<span class="built_in">document</span>.createTextNode(cssText));</div><div class="line">&#125;<span class="keyword">catch</span>&#123;</div><div class="line">	</div><div class="line">	<span class="comment">// IE早起的浏览器，需要使用style元素的stylesheet属性的cssText属性</span></div><div class="line">	style.stylesheet.cssText = cssText;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(style);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> css = <span class="string">"body&#123;color:blue;&#125;"</span>;</div><div class="line">loadStyleString(css);</div></pre></td></tr></table></figure>
-</code></pre>
-          
+          动态加载javascript 和 css
+动态加载javascript方法
+
+1234567891011function loadScript(url) &#123;	var script =document.createElement("script");	script.type="text/ja
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/20/loadJsCssLater/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -962,21 +866,21 @@
       
         
           
-            <h3 id="https-协议下安卓端默认不加载http协议请求"><a href="#https-协议下安卓端默认不加载http协议请求" class="headerlink" title="https 协议下安卓端默认不加载http协议请求"></a>https 协议下安卓端默认不加载http协议请求</h3><blockquote>
-<p>解决办法 <a href="https://segmentfault.com/q/1010000004727822" target="_blank" rel="external">https://segmentfault.com/q/1010000004727822</a></p>
-</blockquote>
-<ul>
-<li>我的解决办法是（把图片的域名更整体更换成https）</li>
-</ul>
-<h3 id="zepto-touch（最新版）-在chrome-55会tap事件会触发两次zepto-issue"><a href="#zepto-touch（最新版）-在chrome-55会tap事件会触发两次zepto-issue" class="headerlink" title="zepto touch（最新版） 在chrome 55会tap事件会触发两次zepto issue"></a>zepto touch（最新版） 在chrome 55会tap事件会触发两次<a href="https://github.com/madrobby/zepto/issues/1249" target="_blank" rel="external">zepto issue</a></h3><blockquote>
-<p>(github zepto issue double tap)[<a href="https://github.com/madrobby/zepto/issues/1249" target="_blank" rel="external">https://github.com/madrobby/zepto/issues/1249</a>] 最后选择用 @MarvinXu 的方法移除所有pointer事件，成功解决，tap在chrome上触发两次的问题。</p>
-</blockquote>
-<h3 id="zepto-获取input-checkbox-是否选中-获取不到"><a href="#zepto-获取input-checkbox-是否选中-获取不到" class="headerlink" title="zepto 获取input checkbox 是否选中 获取不到"></a>zepto 获取input checkbox 是否选中 获取不到</h3><blockquote>
-<p>需要引入zepto的selector.js模块</p>
-<h3 id="【错误处理】-Uncaught-SyntaxError-Invalid-or-unexpected-token"><a href="#【错误处理】-Uncaught-SyntaxError-Invalid-or-unexpected-token" class="headerlink" title="【错误处理】:Uncaught SyntaxError: Invalid or unexpected token"></a>【错误处理】:Uncaught SyntaxError: Invalid or unexpected token</h3><p>这个错误是因为，js代码中存在非英文标点符号（仔细检查下代码）</p>
-</blockquote>
-<h1 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续….."></a>未完待续…..</h1>
-          
+          https 协议下安卓端默认不加载http协议请求
+解决办法 https://segmentfault.com/q/1010000004727822
+
+
+我的解决办法是（把图片的域名更整体更换成https）
+
+zepto touch（最新版） 在chrome 55会tap事件会触发两次zepto i
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/20/JS-Issue/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1106,17 +1010,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/19/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
